@@ -136,8 +136,17 @@
     width: 300px;
 }
 
+.enlighter-setting input[type="text"].input-xl, .enlighter-setting select.input-xl{
+    width: 95%;
+}
+
 .enlighter-setting input[type="checkbox"] {
     padding-top: 5px;
+}
+
+.enlighter-setting textarea{
+    width: 95%;
+    min-height: 300px;
 }
 
 .enlighter-setting:after{
@@ -399,4 +408,20 @@
     background-color: #ffffff;
     border: 1px solid #e5e5e5;
     box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+/* Tables
+-------------------------------- */
+.enlighter-table{
+    border-collapse: collapse;
+}
+
+.enlighter-table tr th{
+    padding: 8px;
+    border-bottom: solid 5px #e5e5e5;
+}
+
+.enlighter-table tr td{
+    padding: 8px;
+    border: solid 1px #d0d0d0;
 }

@@ -20,7 +20,6 @@ class PluginConfig{
     
     // config keys with default values
     private $_defaultConfig = array(
-        'translation-enabled' => true,
         'enlighterjs-init' => 'inline',
         'enlighterjs-assets-js' => true,
         'enlighterjs-assets-themes' => true,
@@ -97,7 +96,6 @@ class PluginConfig{
 
     // validation
     private $_validators = array(
-        'translation-enabled' => 'boolean',
         'enlighterjs-init' => 'string',
         'enlighterjs-assets-js' => 'boolean',
         'enlighterjs-assets-themes' => 'boolean',

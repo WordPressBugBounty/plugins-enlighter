@@ -1,24 +1,24 @@
 <?php
 /**
     Plugin Name: Enlighter - Customizable Syntax Highlighter
-    Plugin URI: https://enlighterjs.org
+    Plugin URI: https://codeberg.org/EnlighterJS
     Description: all-in-one syntax highlighting solution
-    Version: 4.6.1
-    Author: Andi Dittrich
-    Author URI: https://andidittrich.com
+    Version: 4.7.0
+    Author: Aenon Dynamics, Andi Dittrich
+    Author URI: https://aenon-dynamics.com
     License: GPL-2.0
     Text Domain: enlighter
     Domain Path: /lang
-    Requires PHP: 5.6
+    Requires PHP: 7.4
 */
 
 
 // Plugin Bootstrap Operation
 // AUTO GENERATED CODE - DO NOT EDIT !!!
 define('ENLIGHTER_INIT', true);
-define('ENLIGHTER_VERSION', '4.6.1');
-define('ENLIGHTER_WPSKLTN_VERSION', '0.28.0');
-define('ENLIGHTER_PHP_VERSION', '5.6');
+define('ENLIGHTER_VERSION', '4.7.0');
+define('ENLIGHTER_WPSKLTN_VERSION', '0.31.0');
+define('ENLIGHTER_PHP_VERSION', '7.4');
 define('ENLIGHTER_PLUGIN_TITLE', 'Enlighter - Customizable Syntax Highlighter');
 define('ENLIGHTER_PLUGIN_HEADLINE', 'all-in-one syntax highlighting solution');
 define('ENLIGHTER_PLUGIN_PATH', dirname(__FILE__));

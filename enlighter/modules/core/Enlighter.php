@@ -47,17 +47,6 @@ class Enlighter
         if ($this->_settingsManager->getOption('cache-custom')){
             $this->_cacheManager->setCacheLocation($this->_settingsManager->getOption('cache-path'), $this->_settingsManager->getOption('cache-url'));
         }
-
-        // set default settings page
-        $this->_pluginMetaSettingsPage = 'appearance';
-        $this->_pluginMetaAboutPage = 'about';
-
-        // plugin meta links
-        $this->_pluginMetaLinks = array(
-            'https://twitter.com/andidittrich' => __('News & Updates', 'enligther'),
-            'https://github.com/EnlighterJS/Plugin.WordPress/issues' => __('Report Bugs', 'enligther'),
-            'https://enlighterjs.org' => __('EnlighterJS Website', 'enligther')
-        );
     }
 
     // initialized on init
@@ -71,10 +60,15 @@ class Enlighter
             return;
         }
 
-        // load language files
-        if ($this->_settingsManager->getOption('translation-enabled')){
-            load_plugin_textdomain('enlighter', null, 'enlighter/lang/');
-        }
+        // set default settings page
+        $this->_pluginMetaSettingsPage = 'appearance';
+        $this->_pluginMetaAboutPage = 'about';
+
+        // plugin meta links
+        $this->_pluginMetaLinks = array(
+            'https://codeberg.org/EnlighterJS/wp-enlighter/issues' => __('Report Bugs', 'enligther'),
+            'https://codeberg.org/EnlighterJS' => __('EnlighterJS Project', 'enligther')
+        );
 
         // initialize theme customizer (generates the enlighterjs.css file!)
         $this->_themeCustomizer = new Enlighter\customizer\ThemeCustomizer($this->_settingsManager, $this->_cacheManager);

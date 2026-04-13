@@ -61,22 +61,3 @@
     </div>
 </div>
 
-
-<!-- ADVANCED SETTINGS -->
-<div class="postbox enlighter-postbox">
-    <h3 class="hndle"><span><?php _e('Plugin', 'enlighter'); ?></span></h3>
-    <div class="inside enlighter-setting-section">
-
-        <h4><?php _e('I18n (Internationalization)', 'enlighter'); ?></h4>
-        <!-- I18N !-->
-        <?php $this->_settingsUtility->displayCheckbox(
-        __('I18n', 'enlighter'), 
-        'translation-enabled',
-        array(
-            'label' => 'Enable',
-            'description' =>__('Should the plugin load language files (if available) to translate the settings page ?', 'enlighter')
-        ));
-    ?>
-    </div>
-</div>
-

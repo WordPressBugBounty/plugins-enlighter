@@ -20,6 +20,7 @@ class VirtualPageManager{
 
     // list of registered pages
     private $_pages = array();
+    private $_templates = array();
 
     // rewrite helper instance to register rules+tags
     private $_rewriteHelper;
@@ -29,7 +30,10 @@ class VirtualPageManager{
         $this->_rewriteHelper = $rewriteHelper;
 
         // hook into template redirects, priority 5
-        add_action('template_redirect', array($this, 'handleRequest'), 5);
+        add_action('template_redirect', array($this, 'handlePageRequest'), 5);
+
+        // hook into template include, priority 5
+        add_action('template_include', array($this, 'handleTemplateRequest'), 5);
 
         // hool into rewrite action
         add_action('enlighter_rewriterules_init', array($this, 'registerRewriteRules'));
@@ -38,6 +42,11 @@ class VirtualPageManager{
     // register rewrite rules
     public function registerRewriteRules(){
         foreach ($this->_pages as $slug => $d){
+            // add rewrite rules
+            $this->_rewriteHelper->addRewriteRule($d[0], 'index.php?enlighter_' . $slug . '=$matches[1]', 'top');
+            $this->_rewriteHelper->addRewriteTag('%enlighter_' . $slug . '%', '([\w_]+)');
+        }
+        foreach ($this->_templates as $slug => $d){
             // add rewrite rules
             $this->_rewriteHelper->addRewriteRule($d[0], 'index.php?enlighter_' . $slug . '=$matches[1]', 'top');
             $this->_rewriteHelper->addRewriteTag('%enlighter_' . $slug . '%', '([\w_]+)');
@@ -58,8 +67,22 @@ class VirtualPageManager{
         $this->_pages[$slug] = array($regex, $cb);
     }
 
+    // add a new virtual page vie template
+    public function registerTemplate($slug, $regex, $templateFilename){
+        // filter slug
+        $slug = trim(strtolower(preg_replace('/[^\w]/', '', $slug)));
+
+        // valid slug ? length value taken from WPRewrite class
+        if (strlen($slug) < 3){
+            return false;
+        }
+
+        // store callback identified by slug
+        $this->_templates[$slug] = array($regex, $templateFilename);
+    }
+
     // action disptaching
-    public function handleRequest(){
+    public function handlePageRequest(){
 
         // find query var
         foreach ($this->_pages as $slug => $d){
@@ -75,5 +98,20 @@ class VirtualPageManager{
             }
         }
     }
-    
+
+    // action disptaching
+    public function handleTemplateRequest($template){
+
+        // find query var
+        foreach ($this->_templates as $slug => $d){
+
+            // query var set ?
+            if (($match = get_query_var('enlighter_' . $slug, false)) !== false){
+                return ENLIGHTER_PLUGIN_PATH . '/views/' . $d[1];
+            }
+        }
+
+        // default theme template
+        return $template;
+    }
 }

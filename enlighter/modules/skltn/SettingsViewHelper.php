@@ -165,6 +165,43 @@ class SettingsViewHelper{
         $this->settingsFooter($options);
     }
 
+    // Generates a textarea-form
+    public function displayTextarea($title, $optionName, $options = array()){
+
+        // open setting block
+        $this->settingsHeader($optionName, $title, 'textarea');
+
+        // wrap into label
+        echo HtmlUtil::generateTag('label', array(
+            'for' => 'enlighter-' . $optionName
+        ), false);
+
+        // element attributes
+        $attb = array(
+            'name' => 'enlighter-options[' . $optionName . ']',
+            'id'   => 'enlighter-' . $optionName,
+            'title' => $title,
+            'class' => (isset($options['cssClass']) ? $options['cssClass'] : ''),
+            'placeholder' => (isset($options['placeholder']) ? $options['placeholder'] : '')
+        );
+
+        // generate tag, escape attributes
+        echo HtmlUtil::generateTag('textarea', $attb, true, $this->_config[$optionName]);
+
+        // add label text ?
+        if (isset($options['label'])){
+            echo HtmlUtil::generateTag('span', array(
+                'class' => 'enlighter-label-text'
+            ), true, esc_html($options['label']));
+        }
+
+        // close label
+        echo '</label>';
+
+        // close setting block
+        $this->settingsFooter($options);
+    }
+
     private function settingsHeader($optionName, $title, $type='input'){
         echo '<!-- SETTING [', $optionName , '] -->';
         echo '<div class="enlighter-setting enlighter-type-', esc_html($type), '"><div class="enlighter-setting-title">', esc_html($title), '</div><div class="enlighter-setting-input">';

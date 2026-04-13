@@ -2,9 +2,9 @@
 Contributors: Andi Dittrich, aenondynamics
 Tags: syntax highlighting, syntax highlighter, highlighter, highlighting, classic editor, gutenberg, javascript, code, coding, sourcecode,customizable, visual editor, tinymce, themes, css, html, php, js, xml, c, cpp, c#, ruby, shell, java, python, sql, rust, matlab, json, ini, config, cython, lua, assembly, asm
 Donate link: https://enlighterjs.org
-Requires at least: 6.0
-Tested up to: 6.1
-Stable tag: 4.6.0
+Requires at least: 6.8
+Tested up to: 6.9
+Stable tag: 4.7.0
 License: GPL-2.0
 License URI: https://opensource.org/licenses/gpl-2.0.php
 
@@ -12,7 +12,7 @@ All-in-one Syntax Highlighting solution. Full Gutenberg and Classic Editor integ
 
 ## Description ##
 
-Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. Highlighting is powered by the [EnlighterJS](https://enlighterjs.org) javascript library to provide a beautiful code-appearance.
+Enlighter is a free, easy-to-use, syntax highlighting tool for WordPress. Highlighting is powered by the [EnlighterJS](https://codeberg.org/EnlighterJS) javascript library to provide a beautiful code-appearance.
 
 Using it can be as simple as adding a new Enlighter Sourcecode block (Gutenberg) and insert the code which you want to highlight: Enlighter takes care of the rest!
 
@@ -139,6 +139,14 @@ The WordPress plugin [related FAQ page](https://github.com/EnlighterJS/documenta
 
 
 ## Changelog ##
+
+### 4.7.0 ###
+
+* Bugfix: WordPress `v6.7.0` compatibility regarding text domain transltions calls
+* Changed: PHP `8.4` compatibility
+* Changed: updated Repository URLs to new [Codeberg.org repository](https://codeberg.org/EnlighterJS) 
+* Changed: `wp-skltn` library updated to **0.31.0** - MPL 2.0 License
+* Changed: removed outdated translations and `load_textdomain` call
 
 ### 4.6.1 ###
 
